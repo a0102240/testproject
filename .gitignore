@@ -1,3 +1,4 @@
+# 제외폴더
 .git/
 .gradle/
 .idea/
@@ -6,9 +7,10 @@ bin/
 build/
 logs/
 
+# 제외파일
 .classpath
 .project
-.local.properties
+local.properties
 settings.gradle
 
 !src/main/java/
