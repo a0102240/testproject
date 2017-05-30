@@ -119,5 +119,53 @@ public class ModelArticle {
                 + ", UpdateUID=" + UpdateUID + ", UpdateDT=" + UpdateDT + "]";
     }
     
-
+    public ModelArticle() {
+        super();
+    }
+}
+    }
+    public Boolean getUseYN() {
+        return UseYN;
+    }
+    public void setUseYN(Boolean useYN) {
+        UseYN = useYN;
+    }
+    public String getInsertUID() {
+        return InsertUID;
+    }
+    public void setInsertUID(String insertUID) {
+        InsertUID = insertUID;
+    }
+    public Date getInsertDT() {
+        return InsertDT;
+    }
+    public void setInsertDT(Date insertDT) {
+        InsertDT = insertDT;
+    }
+    public String getUpdateUID() {
+        return UpdateUID;
+    }
+    public void setUpdateUID(String updateUID) {
+        UpdateUID = updateUID;
+    }
+    public Date getUpdateDT() {
+        return UpdateDT;
+    }
+    public void setUpdateDT(Date updateDT) {
+        UpdateDT = updateDT;
+    }
+    
+    @Override
+    public String toString() {
+        return "ModelArticle [articleno=" + articleno + ", boardcd=" + boardcd
+                + ", title=" + title + ", content=" + content + ", email="
+                + email + ", hit=" + hit + ", regdate=" + regdate + ", UseYN="
+                + UseYN + ", InsertUID=" + InsertUID + ", InsertDT=" + InsertDT
+                + ", UpdateUID=" + UpdateUID + ", UpdateDT=" + UpdateDT + "]";
+    }
+    
+    public ModelArticle() {
+        super();
+    }
+       
 }
