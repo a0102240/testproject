@@ -1,5 +1,6 @@
 package java24.board.infc;
 
+import java.util.HashMap;
 import java.util.List;
 import java24.board.model.ModelArticle;
 import java24.board.model.ModelBoard;
@@ -15,29 +16,29 @@ public interface IBoard {
     
     ModelBoard getBoardListResultMap();
     
-    int insertBoard(ModelBoard boardcd,ModelBoard boardnm,ModelBoard UseYN,ModelBoard InsertUID,ModelBoard InsertDT,ModelBoard UpdateUID);
+    int insertBoard(ModelBoard board);
     
     int updateBoard();
     
-    int deleteBoard(ModelBoard boardcd,ModelBoard boardnm,ModelBoard UseYN);
+    int deleteBoard(ModelBoard board);
     
-    List<ModelBoard> getBoardSearch(ModelBoard boardcd, ModelBoard boardnm);
+    List<ModelBoard> getBoardSearch(ModelBoard board);
     
-    List<ModelBoard> getBoardPaging(ModelBoard boardcd, ModelBoard searchWord,ModelBoard start,ModelBoard end);
+    List<ModelBoard> getBoardPaging(ModelBoard board);
     
-    int insertBoardList (int boardcd, int boardnm, int UseYN);
+    int insertBoardList (List item);
         
     int getArticleTotalRecord (int boardcd);
         
-    List<ModelArticle> getArticleList (ModelArticle boardcd, ModelArticle start, ModelArticle end);
+    List<ModelArticle> getArticleList (HashMap articleList);
      
-    ModelArticle getArticle (int articleNo);
+    List<ModelArticle> getArticle (int articleNo);
      
-    int insertArticle(ModelArticle boardcd,ModelArticle articleno,ModelArticle title,ModelArticle email,ModelArticle UseYN);
+    int insertArticle(ModelArticle article);
     
-    int updateArticle(ModelArticle articleNo, ModelArticle boardcd, ModelArticle email,ModelArticle UseYN);
+    int updateArticle(String searchValue);
     
-    int deleteArticle(ModelArticle articleNo, ModelArticle boardcd, ModelArticle email,ModelArticle UseYN);
+    int deleteArticle(ModelArticle article);
 
     int increaseHit(int articleNo);
     
