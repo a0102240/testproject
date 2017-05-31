@@ -39,9 +39,14 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public ModelBoard getBoardOne(String boardcd) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelBoard> getBoardOne(String boardcd) {
+        List<ModelBoard> result = null;
+        try {
+        result = dao.getBoardOne(boardcd);
+        } catch (Exception e) {
+            log.error( "getBoardOne " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
@@ -65,8 +70,9 @@ public class ServiceBoard implements IServiceBoard{
 
     @Override
     public int updateBoard(ModelBoard updateValue, ModelBoard searchValue) {
-        // TODO Auto-generated method stub
-        return 0;
+        int resert =-1;
+        resert=dao.updateBoard(updateValue, searchValue);
+        return resert;
     }
 
     @Override

@@ -25,16 +25,15 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public String getBoardName(String boardcd) {
-        
         String result = "";
         result = session.selectOne("mapper.mapperBoard.getBoardName", boardcd );
         return result;
     }
 
     @Override
-    public ModelBoard getBoardOne(String boardcd) {
-        ModelBoard result = null;
-        result = session.selectOne("mapper.mapperBoard.getBoardOne", boardcd );
+    public List<ModelBoard> getBoardOne(String boardcd) {
+        List<ModelBoard> result = null;
+        result = session.selectList("mapper.mapperBoard.getBoardOne", boardcd );
         return result;
     }
 
@@ -77,14 +76,16 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public List<ModelBoard> getBoardSearch(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelBoard> result = null;
+        result = session.selectList("mapper.mapperBoard.getBoardSearch",board);
+        return result;
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelBoard> getBoardPaging() {
+        List<ModelBoard> result = null;
+        result = session.selectList("mapper.mapperBoard.getBoardPaging");
+        return result;
     }
 
     @Override
@@ -143,8 +144,8 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelArticle> getPrevArticle(ModelBoard board,
-            String searchWord) {
+    public List<ModelArticle> getPrevArticle(ModelBoard board,String searchWord) {
+
         // TODO Auto-generated method stub
         return null;
     }
@@ -196,6 +197,12 @@ public class DaoBoard implements IDaoBoard {
     public int deleteComment(ModelComments comments) {
         // TODO Auto-generated method stub
         return 0;
+    }
+
+    @Override
+    public List<ModelBoard> getBoardPaging(ModelBoard board) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     

@@ -1,5 +1,6 @@
 package java24.board.infc;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java24.board.model.ModelArticle;
@@ -11,7 +12,7 @@ public interface IBoard {
 
     String getBoardName(String boardcd);
     
-    ModelBoard getBoardOne (String boardcd);
+    List<ModelBoard> getBoardOne (String boardcd);
     
     List<ModelBoard> getBoardList();
     
