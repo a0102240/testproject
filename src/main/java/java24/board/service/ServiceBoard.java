@@ -1,15 +1,15 @@
 package java24.board.service;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java23.Log4jTest;
+import java.util.HashMap;
+import java.util.List;
+
+import java24.board.Log4jTest;
 import java24.board.dao.DaoBoard;
 import java24.board.infc.IServiceBoard;
 import java24.board.model.ModelArticle;
