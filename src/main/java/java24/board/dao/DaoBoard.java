@@ -31,14 +31,16 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public ModelBoard getBoardOne(String boardcd) {
-        // TODO Auto-generated method stub
-        return null;
+        ModelBoard result = null;
+        result = session.selectOne("mapper.mapperBoard.getBoardOne", boardcd );
+        return result;
     }
 
     @Override
     public List<ModelBoard> getBoardList() {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelBoard> result = null;
+        result = session.selectList("mapper.mapperBoard.getBoardList");
+        return result;
     }
 
     @Override
@@ -49,20 +51,23 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int insertBoard(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = 0;
+        result = session.selectList("mapper.mapperBoard.insertBoard", board);
+        return result;
     }
 
     @Override
     public int updateBoard() {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = 0;
+        result = session.selectList("mapper.mapperBoard.updateBoard");
+        return result;
     }
 
     @Override
     public int deleteBoard(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = 0;
+        result = session.selectList("mapper.mapperBoard.insertBoard", board);
+        return result;
     }
 
     @Override
