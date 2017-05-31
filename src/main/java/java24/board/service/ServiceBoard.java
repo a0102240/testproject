@@ -51,9 +51,15 @@ public class ServiceBoard implements IServiceBoard{
 
     @Override
     public List<ModelBoard> getBoardList() {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelBoard> result = null;
+        try {
+        result = dao.getBoardList();
+        } catch (Exception e) {
+            log.error( "getBoardList " + e.getMessage() );
+        }
+        return result;
     }
+    
 
     @Override
     public ModelBoard getBoardListResultMap() {
@@ -192,7 +198,7 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public int updateComment(String updateValue) {
+    public int updateComment(ModelComments updateValue, ModelComments searchValue) {
         // TODO Auto-generated method stub
         return 0;
     }
