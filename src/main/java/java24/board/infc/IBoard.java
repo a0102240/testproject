@@ -1,6 +1,5 @@
 package java24.board.infc;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java24.board.model.ModelArticle;
