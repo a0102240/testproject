@@ -85,17 +85,18 @@
           FROM TB_Bbs_Board
          WHERE 1 =1 
            <if  test="boardcd != null and boardcd != ''">
-           AND boardcd LIKE '%' || #{boardcd} || '%'
+           AND boardcd LIKE CONCAT('%', #{boardcd},'%')
            </if>
            <if  test="boardnm != null and boardnm != ''">
-           AND boardnm LIKE '%' || #{boardnm} || '%'
+           AND boardnm LIKE CONCAT('%', #{boardnm},'%')
            </if>
     </select>
     
     <select id="getBoardPaging"  parameterType="hashmap"  resultType="ModelBoard">
+        SET @RNUM := 0;
         SELECT boardcd, boardnm, UseYN
         FROM (
-            SELECT rownum r, a.* 
+            SELECT @RNUM := @RNUM + 1 r, a.*
                 FROM (
                     SELECT 
                         boardcd, boardnm, UseYN
