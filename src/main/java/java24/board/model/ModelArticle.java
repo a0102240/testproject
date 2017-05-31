@@ -17,26 +17,6 @@ public class ModelArticle {
     private Date    UpdateDT  = null;  // DATETIME NULL DEFAULT NULL,
     
     
-    
-    public ModelArticle(Integer articleno, String boardcd, String title,
-            String content, String email, Integer hit, Date regdate,
-            Boolean useYN, String insertUID, Date insertDT, String updateUID,
-            Date updateDT) {
-
-        this.articleno = articleno;
-        this.boardcd = boardcd;
-        this.title = title;
-        this.content = content;
-        this.email = email;
-        this.hit = hit;
-        this.regdate = regdate;
-        UseYN = useYN;
-        InsertUID = insertUID;
-        InsertDT = insertDT;
-        UpdateUID = updateUID;
-        UpdateDT = updateDT;
-    }
-    
     public Integer getArticleno() {
         return articleno;
     }
