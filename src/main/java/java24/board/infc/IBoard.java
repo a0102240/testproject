@@ -47,11 +47,11 @@ public interface IBoard {
     
     List<ModelArticle> getPrevArticle(ModelBoard board, String searchWord);
     
-    List<ModelAttachFile> getAttachFile(int articleNo);
+    List<ModelAttachFile> getAttachFile(int attachFileNo);
     
-    int insertAttachFile(ModelAttachFile attachfile);
+    int insertAttachFile(ModelAttachFile attachFile);
     
-    int deleteAttachFile(ModelAttachFile attachfile);
+    int deleteAttachFile(ModelAttachFile attachFile);
     
     List<ModelComments> getComment(int commentNo);
     

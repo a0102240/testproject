@@ -93,7 +93,6 @@
     </select>
     
     <select id="getBoardPaging"  parameterType="hashmap"  resultType="ModelBoard">
-        SET @RNUM := 0;
         SELECT boardcd, boardnm, UseYN
         FROM (
             SELECT @RNUM := @RNUM + 1 r, a.*
@@ -111,8 +110,8 @@
                         </if>
                     GROUP BY boardcd, boardnm, UseYN
                     ORDER BY boardcd DESC
-                ) a
-            )
+                ) a, (SELECT @RNUM:=0) b
+            ) temp
         WHERE r BETWEEN #{start} AND #{end}
     </select>  
     

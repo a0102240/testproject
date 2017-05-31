@@ -162,51 +162,91 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public List<ModelAttachFile> getAttachFile(int articleNo) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelAttachFile> getAttachFile(int attachFileNo) {
+        List<ModelAttachFile> result = null;
+        try {
+            result = dao.getAttachFile(attachFileNo);
+        } catch (Exception e) {
+            log.error( "getAttachFile " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
-    public int insertAttachFile(ModelAttachFile attachfile) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int insertAttachFile(ModelAttachFile attachFile) {
+        int result = -1;
+        try {
+            result = dao.insertAttachFile(attachFile);
+        } catch (Exception e) {
+            log.error( "insertAttachFile " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
-    public int deleteAttachFile(ModelAttachFile attachfile) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int deleteAttachFile(ModelAttachFile attachFile) {
+        int result = -1;
+        try {
+            result = dao.deleteAttachFile(attachFile);
+        } catch (Exception e) {
+            log.error( "deleteAttachFile " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public List<ModelComments> getComment(int commentNo) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelComments> result = null;
+        try {
+            result = dao.getComment(commentNo);
+        } catch (Exception e) {
+            log.error( "getComment " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public List<ModelComments> getCommentList(int articleNo) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelComments> result = null;
+        try {
+            result = dao.getCommentList(articleNo);
+        } catch (Exception e) {
+            log.error( "getCommentList " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public int insertComment(ModelComments comments) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        try {
+            result = dao.insertComment(comments);
+        } catch (Exception e) {
+            log.error( "insertComment " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public int updateComment(ModelComments updateValue, ModelComments searchValue) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        try {
+            result = dao.updateComment(updateValue, searchValue);
+        } catch (Exception e) {
+            log.error( "updateComment " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public int deleteComment(ModelComments comments) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        try {
+            result = dao.deleteComment(comments);
+        } catch (Exception e) {
+            log.error( "deleteComment " + e.getMessage() );
+        }
+        return result;
     }
     
     
