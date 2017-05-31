@@ -3,18 +3,30 @@ package java24.board.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+
 import java24.board.infc.IBoard;
-import java24.board.infc.ModelAttachFile;
+import java24.board.model.ModelAttachFile;
 import java24.board.model.ModelArticle;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
+@Repository("board")
 public class DaoBoard implements IBoard {
+    
+    @Autowired
+    @Qualifier("sqlSession")
+    private SqlSession session;
 
     @Override
     public String getBoardName(String boardcd) {
-        // TODO Auto-generated method stub
-        return null;
+        
+        String result = "";
+        result = session.selectOne("mapper.mapperBoard.getBoardName", boardcd );
+        return result;
     }
 
     @Override
@@ -128,7 +140,8 @@ public class DaoBoard implements IBoard {
     }
 
     @Override
-    public List<ModelAttachFile> getAttachFile(int articleNo) {
+    public List<ModelAttachFile> getAttachFile(
+            int articleNo) {
         // TODO Auto-generated method stub
         return null;
     }

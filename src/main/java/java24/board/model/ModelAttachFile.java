@@ -3,7 +3,7 @@ package java24.board.model;
 import java.util.Arrays;
 import java.util.Date;
 
-public class ModelAttachfile {
+public class ModelAttachFile {
     
    private Integer attachfileno =null;  // `attachfileno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
    private String filename      ="";  // `filename` VARCHAR(50) NOT NULL,

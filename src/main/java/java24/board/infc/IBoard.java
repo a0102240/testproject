@@ -3,6 +3,7 @@ package java24.board.infc;
 import java.util.HashMap;
 import java.util.List;
 import java24.board.model.ModelArticle;
+import java24.board.model.ModelAttachFile;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
