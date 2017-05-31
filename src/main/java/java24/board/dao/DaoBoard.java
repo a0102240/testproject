@@ -82,8 +82,11 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging() {
+    public List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord) {
         List<ModelBoard> result = null;
+        Map<String,ModelBoard> map=new HashMap<String,ModelBoard>();
+        map.put("boardcd", boardcd);
+        map.put("searchWord", searchWord);
         result = session.selectList("mapper.mapperBoard.getBoardPaging");
         return result;
     }
@@ -210,7 +213,7 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging(ModelBoard board) {
+    public List<ModelBoard> getBoardPaging() {
         // TODO Auto-generated method stub
         return null;
     }

@@ -111,7 +111,7 @@
                         </if>
                     GROUP BY boardcd, boardnm, UseYN
                     ORDER BY boardcd DESC
-                ) a
+                ) 
             )
         WHERE r BETWEEN #{start} AND #{end}
     </select>  

@@ -25,7 +25,7 @@ public interface IBoard {
     
     List<ModelBoard> getBoardSearch(ModelBoard board);
     
-    List<ModelBoard> getBoardPaging(ModelBoard board);
+    List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord);
     
     int insertBoardList (List item);
         
