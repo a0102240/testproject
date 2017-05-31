@@ -96,7 +96,7 @@ public String toString() {
             + Arrays.toString(imageData) + "]";
 }
 
-public ModelAttachfile() {
+public ModelAttachFile() {
     super();
 }      
     
