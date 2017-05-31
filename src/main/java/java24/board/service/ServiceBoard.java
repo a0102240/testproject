@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import java24.board.Log4jTest;
 import java24.board.dao.DaoBoard;
@@ -112,9 +113,13 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public List<ModelArticle> getArticleList(HashMap articleList) {
-        // TODO Auto-generated method stub
-        return null;
+    public int getArticleList(String boardcd,String searchWord, int start, int end) {
+        Map<String, Object> map=new HashMap<>();
+        map.put("boardcd",boardcd);
+        map.put("searchWord", searchWord);
+        map.put("start", start);
+        map.put("end", end);
+        return 0;
     }
 
     @Override

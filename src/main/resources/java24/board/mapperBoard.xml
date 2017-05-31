@@ -93,6 +93,7 @@
     </select>
     
     <select id="getBoardPaging"  parameterType="hashmap"  resultType="ModelBoard">
+
         SELECT boardcd, boardnm, UseYN
         FROM (
             SELECT @RNUM := @RNUM + 1 r, a.*
