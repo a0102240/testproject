@@ -65,7 +65,7 @@ public class DaoBoard implements IDaoBoard {
         map.put("searchValue",searchValue);
         result=session.update("mapper.mapperBoard.updateBoard",map);
         return result;
-        }
+    }
 
     @Override
     public int deleteBoard(ModelBoard board) {
@@ -151,52 +151,62 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelAttachFile> getAttachFile(
-            int articleNo) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelAttachFile> getAttachFile(int articleNo) {
+        List<ModelAttachFile> result = null;
+        result = session.selectList("mapper.mapperBoard.getAttachFile", articleNo);
+        return result;
     }
 
     @Override
     public int insertAttachFile(ModelAttachFile attachfile) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.insert("mapper.mapperBoard.insertAttachFile", attachfile);
+        return result;
     }
 
     @Override
     public int deleteAttachFile(ModelAttachFile attachfile) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.delete("mapper.mapperBoard.deleteAttachFile", attachfile);
+        return result;
     }
 
     @Override
     public List<ModelComments> getComment(int commentNo) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelComments> result = null;
+        result = session.selectList("mapper.mapperBoard.getComment", commentNo);
+        return result;
     }
 
     @Override
     public List<ModelComments> getCommentList(int articleNo) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelComments> result = null;
+        result = session.selectList("mapper.mapperBoard.getCommentList", articleNo);
+        return result;
     }
 
     @Override
     public int insertComment(ModelComments comments) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.insert("mapper.mapperBoard.insertComment", comments);
+        return result;
     }
 
     @Override
-    public int updateComment(String updateValue) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int updateComment(ModelComments updateValue, ModelComments searchValue) {
+        int result=-1;
+        Map<String, ModelComments> map=new HashMap<String, ModelComments>();
+        map.put("updateValue",updateValue);
+        map.put("searchValue",searchValue);
+        result=session.update("mapper.mapperBoard.updateBoard",map);
+        return result;
     }
 
     @Override
     public int deleteComment(ModelComments comments) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.delete("mapper.mapperBoard.deleteComment", comments);
+        return result;
     }
 
     @Override
