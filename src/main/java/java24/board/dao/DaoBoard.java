@@ -104,9 +104,9 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelArticle> getArticleList(HashMap articleList) {
+    public int getArticleList(String boardcd,String searchWord, int start, int end) {
         // TODO Auto-generated method stub
-        return null;
+        return 0;
     }
 
     @Override

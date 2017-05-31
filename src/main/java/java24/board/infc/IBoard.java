@@ -31,7 +31,7 @@ public interface IBoard {
         
     int getArticleTotalRecord (int boardcd);
         
-    List<ModelArticle> getArticleList (HashMap articleList);
+    int getArticleList (String boardcd,String searchWord, int start, int end);
      
     List<ModelArticle> getArticle (int articleNo);
      
