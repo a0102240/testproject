@@ -69,16 +69,16 @@ public class ServiceBoard implements IServiceBoard{
 
     @Override
     public int insertBoard(ModelBoard board) {
-        int resert =-1;
-        resert=dao.insertBoard(board);
-        return resert;
+        int result =-1;
+        result=dao.insertBoard(board);
+        return result;
     }
 
     @Override
     public int updateBoard(ModelBoard updateValue, ModelBoard searchValue) {
-        int resert =-1;
-        resert=dao.updateBoard(updateValue, searchValue);
-        return resert;
+        int result =-1;
+        result=dao.updateBoard(updateValue, searchValue);
+        return result;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging(ModelBoard board) {
+    public List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -130,7 +130,7 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public int updateArticle(String searchValue) {
+    public int updateArticle(ModelBoard updateValue, ModelBoard searchValue) {
         // TODO Auto-generated method stub
         return 0;
     }

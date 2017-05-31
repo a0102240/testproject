@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import java23.mybatis.model.ModelBook;
 import java24.board.infc.IDaoBoard;
 import java24.board.model.ModelAttachFile;
 import java24.board.model.ModelArticle;
@@ -82,16 +81,20 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging() {
+    public List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord) {
         List<ModelBoard> result = null;
+        Map<String,ModelBoard> map=new HashMap<String,ModelBoard>();
+        map.put("boardcd", boardcd);
+        map.put("searchWord", searchWord);
         result = session.selectList("mapper.mapperBoard.getBoardPaging");
         return result;
     }
 
     @Override
     public int insertBoardList(List item) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result=-1;
+        result=session.insert("mapper.mapperBook.insertBoardList",item);
+        return result;
     }
 
     @Override
@@ -108,26 +111,33 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public List<ModelArticle> getArticle(int articleNo) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelArticle> result = null;
+        result = session.selectList("mapper.mapperBoard.getArticle",articleNo);
+        return result;
     }
 
     @Override
     public int insertArticle(ModelArticle article) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.insert("mapper.mapperBoard.insertArticle",article);
+        return result;
     }
 
     @Override
-    public int updateArticle(String searchValue) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int updateArticle (ModelBoard updateValue, ModelBoard searchValue) {
+        int result=-1;
+        Map<String,ModelBoard> map=new HashMap<String,ModelBoard>();
+        map.put("updateValue",updateValue);
+        map.put("searchValue",searchValue);
+        result=session.update("mapper.mapperBook.updateArticle",map);
+        return result;
     }
 
     @Override
     public int deleteArticle(ModelArticle article) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result=-1;
+        result=session.delete("mapper.mapperBook.deleteArticle",article);
+        return result;
     }
 
     @Override
@@ -210,7 +220,7 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging(ModelBoard board) {
+    public List<ModelBoard> getBoardPaging() {
         // TODO Auto-generated method stub
         return null;
     }
