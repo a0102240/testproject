@@ -15,7 +15,7 @@ public class ModelArticle {
     private Date    InsertDT  = null;  // DATETIME NULL DEFAULT NULL,
     private String  UpdateUID = ""  ;  // VARCHAR(40) NULL DEFAULT NULL,
     private Date    UpdateDT  = null;  // DATETIME NULL DEFAULT NULL,
-    
+
     
     public Integer getArticleno() {
         return articleno;
