@@ -59,7 +59,7 @@ public interface IBoard {
     
     int insertComment(ModelComments comments);
     
-    int updateComment(String updateValue);
+    int updateComment(ModelComments updateValue, ModelComments searchValue);
     
     int deleteComment(ModelComments comments);
 
