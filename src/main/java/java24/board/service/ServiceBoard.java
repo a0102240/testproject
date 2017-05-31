@@ -130,7 +130,7 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public int updateArticle(String searchValue) {
+    public int updateArticle(ModelBoard updateValue, ModelBoard searchValue) {
         // TODO Auto-generated method stub
         return 0;
     }

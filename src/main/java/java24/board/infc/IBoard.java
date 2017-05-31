@@ -37,7 +37,7 @@ public interface IBoard {
      
     int insertArticle(ModelArticle article);
     
-    int updateArticle(String searchValue);
+    int updateArticle(ModelBoard updateValue, ModelBoard searchValue);
     
     int deleteArticle(ModelArticle article);
 
