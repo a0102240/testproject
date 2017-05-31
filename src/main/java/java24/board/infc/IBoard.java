@@ -19,7 +19,7 @@ public interface IBoard {
     
     int insertBoard(ModelBoard board);
     
-    int updateBoard();
+    int updateBoard(ModelBoard updateValue, ModelBoard searchValue);
     
     int deleteBoard(ModelBoard board);
     

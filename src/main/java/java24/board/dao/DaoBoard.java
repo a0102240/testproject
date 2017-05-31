@@ -2,12 +2,14 @@ package java24.board.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java23.mybatis.model.ModelBook;
 import java24.board.infc.IDaoBoard;
 import java24.board.model.ModelAttachFile;
 import java24.board.model.ModelArticle;
@@ -51,22 +53,25 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int insertBoard(ModelBoard board) {
-        int result = 0;
-        result = session.selectList("mapper.mapperBoard.insertBoard", board);
+        int result = -1;
+        result = session.insert("mapper.mapperBoard.insertBoard", board);
         return result;
     }
 
     @Override
-    public int updateBoard() {
-        int result = 0;
-        result = session.selectList("mapper.mapperBoard.updateBoard");
+    public int updateBoard(ModelBoard updateValue,ModelBoard searchValue) {
+        int result=-1;
+        Map<String,ModelBoard> map=new HashMap<String,ModelBoard>();
+        map.put("updateValue",updateValue);
+        map.put("searchValue",searchValue);
+        result=session.update("mapper.mapperBoard.updateBoard",map);
         return result;
-    }
+        }
 
     @Override
     public int deleteBoard(ModelBoard board) {
-        int result = 0;
-        result = session.selectList("mapper.mapperBoard.insertBoard", board);
+        int result = -1;
+        result = session.delete("mapper.mapperBoard.deleteBoard", board);
         return result;
     }
 

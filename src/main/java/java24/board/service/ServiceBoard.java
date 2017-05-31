@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,12 +58,13 @@ public class ServiceBoard implements IServiceBoard{
 
     @Override
     public int insertBoard(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return 0;
+        int resert =-1;
+        resert=dao.insertBoard(board);
+        return resert;
     }
 
     @Override
-    public int updateBoard() {
+    public int updateBoard(ModelBoard updateValue, ModelBoard searchValue) {
         // TODO Auto-generated method stub
         return 0;
     }
