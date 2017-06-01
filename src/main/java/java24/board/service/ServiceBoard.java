@@ -5,77 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import java24.board.Log4jTest;
-import java24.board.dao.DaoBoard;
-import java24.board.infc.IServiceBoard;
-import java24.board.model.ModelArticle;
-import java24.board.model.ModelAttachFile;
-import java24.board.model.ModelBoard;
-import java24.board.model.ModelComments;
-
-@Service("board")
-
-public class ServiceBoard implements IServiceBoard{
-    private static Logger log= LoggerFactory.getLogger(Log4jTest.class);
-    
-    @Autowired
-    @Qualifier("daobook")
-    private DaoBoard dao;
-    
-    @Override
-    public String getBoardName(String boardcd) {
-        String result = "";
-        try {
-        result = dao.getBoardName(boardcd);
-        } catch (Exception e) {
-            log.error( "getBoardName " + e.getMessage() );
-        }
-        return result;
-    }
-
-    @Override
-    public List<ModelBoard> getBoardOne(String boardcd) {
-        List<ModelBoard> result = null;
-        try {
-        result = dao.getBoardOne(boardcd);
-        } catch (Exception e) {
-            log.error( "getBoardOne " + e.getMessage() );
-        }
-        return result;
-    }
-
-    @Override
-    public List<ModelBoard> getBoardList() {
-        List<ModelBoard> result = null;
-        try {
-        result = dao.getBoardList();
-        } catch (Exception e) {
-            log.error( "getBoardList " + e.getMessage() );
-        }
-        return result;
-    }
-    
-
-    @Override
-package java24.board.service;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import java24.board.Log4jTest;
 import java24.board.dao.DaoBoard;
 import java24.board.infc.IServiceBoard;
@@ -215,27 +145,14 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-<<<<<<< .mine
-    public List<ModelArticle> getNextArticle(ModelArticle board,
-            ModelArticle searchWord) {
-        // TODO Auto-generated method stub
-        return null;
-=======
     public List<ModelArticle> getNextArticle(ModelArticle article, String searchWord) {
         List<ModelArticle> result = null;
         try {
             result = dao.getNextArticle(article, searchWord);
->>>>>>> .theirs
         } catch (Exception e) {
-<<<<<<< .mine
-
-
-
-=======
             log.error( "getNextArticle " + e.getMessage() );
         }
         return result;
->>>>>>> .theirs
     }
 
     @Override

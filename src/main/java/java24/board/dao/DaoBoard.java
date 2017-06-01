@@ -101,17 +101,12 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int getArticleTotalRecord(int boardcd) {
-
-
         int result = -1;
         result = session.selectOne("mapper.mapperBoard.getArticleTotalRecord", boardcd );
         return result;
     }
 
     @Override
-
-
-
     public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
         List<ModelArticle> result = null;
         Map<String,ModelArticle> map=new HashMap<String,ModelArticle>();
@@ -156,18 +151,12 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int increaseHit(int articleNo) {
-
-
         int result=-1;
         result=session.selectOne("mapper.mapperBook.increaseHit",articleNo);
         return result;
     }
 
     @Override
-
-
-
-
     public List<ModelArticle> getNextArticle(ModelArticle article, String searchWord) {
         List<ModelArticle> result = null;
         Map<String, Object> map = new HashMap<String, Object>();
@@ -179,9 +168,6 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-
-
-
     public List<ModelArticle> getPrevArticle(ModelArticle article, String searchWord) {
         List<ModelArticle> result = null;
         Map<String, Object> map = new HashMap<String, Object>();
@@ -205,7 +191,6 @@ public class DaoBoard implements IDaoBoard {
 
     public int insertAttachFile(ModelAttachFile attachFile) {
         int result = -1;
-
         result = session.insert("mapper.mapperBoard.insertAttachFile", attachFile);
         return result;
     }
