@@ -135,7 +135,7 @@
         SELECT count(*) FROM TB_BBS_Article 
          WHERE boardcd = #{boardcd}
             <if test="searchWord != null and searchWord != ''">
-            AND (title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%')
+            AND (title LIKE CONCAT('%', #{searchWord}, '%') OR content LIKE CONCAT('%' @{searchWord}, '%'))
             </if>
     </select>   
 
@@ -157,7 +157,7 @@
                     WHERE
                         a.boardcd = #{boardcd}
                         <if test="searchWord != null">
-                        AND (title LIKE '%${searchWord}%' OR content LIKE '%${searchWord}%')
+                        AND (title LIKE CONCAT('%', #{searchWord}, '%') OR content LIKE CONCAT('%', #{searchWord}, '%'))
                         </if>
                     GROUP BY a.articleno, title, a.regdate, hit
                     ORDER BY articleno DESC
@@ -238,8 +238,8 @@
                   WHERE boardcd = #{boardcd} 
                     AND articleno = #{articleNo}
                     <if test="searchWord != null">
-                        AND (title LIKE '%${searchWord}%' OR
-                        content LIKE '%${searchWord}%')
+                        AND (title LIKE CONCAT('%', #{searchWord}, '%') OR
+                        content LIKE CONCAT('%', #{searchWord}, '%'))
                     </if> 
                     ORDER BY articleno
                 ) a
@@ -259,8 +259,8 @@
               WHERE boardcd = #{boardcd} 
                 AND articleno = #{articleNo}
                 <if test="searchWord != null">
-                    AND (title LIKE '%${searchWord}%' OR
-                    content LIKE '%${searchWord}%')
+                    AND (title LIKE CONCAT('%', #{searchWord}, '%') OR
+                    content LIKE CONCAT('%', #{searchWord}, '%'))
                 </if> 
                 ORDER BY articleno DESC
             ) a
