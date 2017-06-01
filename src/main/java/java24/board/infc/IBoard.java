@@ -24,9 +24,9 @@ public interface IBoard {
     
     List<ModelBoard> getBoardSearch(ModelBoard board);
     
-    List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord);
+    List<ModelBoard> getBoardPaging(String boardcd,String searchWord);
     
-    int insertBoardList (List item);
+    int insertBoardList (ModelBoard item);
         
     int getArticleTotalRecord (int boardcd);
         

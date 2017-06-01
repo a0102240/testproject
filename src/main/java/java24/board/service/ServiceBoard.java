@@ -113,7 +113,7 @@ public class ServiceBoard implements IServiceBoard{
     }    
 
     @Override
-    public List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord) {
+    public List<ModelBoard> getBoardPaging(String boardcd,String searchWord) {
         List<ModelBoard> result = null;
         try {
         result = dao.getBoardPaging(boardcd,searchWord);

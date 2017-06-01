@@ -83,12 +83,12 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord) {
+    public List<ModelBoard> getBoardPaging(String boardcd,String searchWord) {
         List<ModelBoard> result = null;
-        Map<String,ModelBoard> map=new HashMap<String,ModelBoard>();
+        Map<String,String> map=new HashMap<String,String>();
         map.put("boardcd", boardcd);
         map.put("searchWord", searchWord);
-        result = session.selectList("mapper.mapperBoard.getBoardPaging");
+        result = session.selectList("mapper.mapperBoard.getBoardPaging",map);
         return result;
     }
 
