@@ -25,4 +25,4 @@ src/main/resources/*
 
 !src/test/java/
 src/test/java/*
-!src/test/java/mybatis/
+!src/test/java/java24/
