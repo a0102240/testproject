@@ -44,9 +44,11 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public ModelBoard getBoardListResultMap() {
-        // TODO Auto-generated method stub
-        return null;
+
+    public List<ModelBoard> getBoardListResultMap() {
+        List<ModelBoard> result = null;
+        result = session.selectList("mapper.mapperBoard.getBoardListResultMap");
+        return result;
     }
 
     @Override
@@ -99,14 +101,21 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int getArticleTotalRecord(int boardcd) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.selectOne("mapper.mapperBoard.getArticleTotalRecord", boardcd );
+        return result;
     }
 
     @Override
-    public int getArticleList(String boardcd,String searchWord, int start, int end) {
-        // TODO Auto-generated method stub
-        return 0;
+    public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
+        List<ModelArticle> result = null;
+        Map<String,ModelArticle> map=new HashMap<String,ModelArticle>();
+        map.put("boardcd", boardcd);
+        map.put("searchWord", searchWord);
+        map.put("start", start);
+        map.put("end", end);
+        result = session.selectList("mapper.mapperBoard.getArticleList");
+        return result;
     }
 
     @Override
@@ -142,8 +151,9 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int increaseHit(int articleNo) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result=-1;
+        result=session.selectOne("mapper.mapperBook.increaseHit",articleNo);
+        return result;
     }
 
     @Override
@@ -169,13 +179,16 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
+
     public List<ModelAttachFile> getAttachFile(int attachFileNo) {
         List<ModelAttachFile> result = null;
+
         result = session.selectList("mapper.mapperBoard.getAttachFile", attachFileNo);
         return result;
     }
 
     @Override
+
     public int insertAttachFile(ModelAttachFile attachFile) {
         int result = -1;
         result = session.insert("mapper.mapperBoard.insertAttachFile", attachFile);
@@ -183,6 +196,7 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
+
     public int deleteAttachFile(ModelAttachFile attachFile) {
         int result = -1;
         result = session.delete("mapper.mapperBoard.deleteAttachFile", attachFile);

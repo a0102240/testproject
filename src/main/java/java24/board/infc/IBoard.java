@@ -1,6 +1,5 @@
 package java24.board.infc;
 
-import java.util.HashMap;
 import java.util.List;
 import java24.board.model.ModelArticle;
 import java24.board.model.ModelAttachFile;
@@ -15,7 +14,7 @@ public interface IBoard {
     
     List<ModelBoard> getBoardList();
     
-    ModelBoard getBoardListResultMap();
+    List<ModelBoard> getBoardListResultMap();
     
     int insertBoard(ModelBoard board);
     
@@ -31,7 +30,7 @@ public interface IBoard {
         
     int getArticleTotalRecord (int boardcd);
         
-    int getArticleList (String boardcd,String searchWord, int start, int end);
+    List<ModelArticle>getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end);
      
     List<ModelArticle> getArticle (int articleNo);
      
@@ -50,7 +49,7 @@ public interface IBoard {
     List<ModelAttachFile> getAttachFile(int attachFileNo);
     
     int insertAttachFile(ModelAttachFile attachFile);
-    
+
     int deleteAttachFile(ModelAttachFile attachFile);
     
     List<ModelComments> getComment(int commentNo);

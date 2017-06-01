@@ -5,12 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import java24.board.Log4jTest;
 import java24.board.dao.DaoBoard;
 import java24.board.infc.IServiceBoard;
@@ -63,7 +58,7 @@ public class ServiceBoard implements IServiceBoard{
     
 
     @Override
-    public ModelBoard getBoardListResultMap() {
+    public List<ModelBoard> getBoardListResultMap() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -113,13 +108,10 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public int getArticleList(String boardcd,String searchWord, int start, int end) {
-        Map<String, Object> map=new HashMap<>();
-        map.put("boardcd",boardcd);
-        map.put("searchWord", searchWord);
-        map.put("start", start);
-        map.put("end", end);
-        return 0;
+    public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
+        List<ModelArticle> result=null;
+        result=dao.getArticleList(boardcd, searchWord, start, end);
+        return result;
     }
 
     @Override
