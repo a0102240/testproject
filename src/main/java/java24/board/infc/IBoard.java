@@ -15,7 +15,7 @@ public interface IBoard {
     
     List<ModelBoard> getBoardList();
     
-    ModelBoard getBoardListResultMap();
+    List<ModelBoard> getBoardListResultMap();
     
     int insertBoard(ModelBoard board);
     
@@ -31,7 +31,7 @@ public interface IBoard {
         
     int getArticleTotalRecord (int boardcd);
         
-    int getArticleList (String boardcd,String searchWord, int start, int end);
+    List<ModelArticle> getArticleList (ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end);
      
     List<ModelArticle> getArticle (int articleNo);
      
@@ -43,7 +43,7 @@ public interface IBoard {
 
     int increaseHit(int articleNo);
     
-    List<ModelArticle> getNextArticle(ModelBoard board, String searchWord); 
+    List<ModelArticle> getNextArticle(ModelArticle board, ModelArticle searchWord); 
     
     List<ModelArticle> getPrevArticle(ModelBoard board, String searchWord);
     

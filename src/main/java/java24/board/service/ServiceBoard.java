@@ -63,7 +63,7 @@ public class ServiceBoard implements IServiceBoard{
     
 
     @Override
-    public ModelBoard getBoardListResultMap() {
+    public List<ModelBoard> getBoardListResultMap() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -113,13 +113,10 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public int getArticleList(String boardcd,String searchWord, int start, int end) {
-        Map<String, Object> map=new HashMap<>();
-        map.put("boardcd",boardcd);
-        map.put("searchWord", searchWord);
-        map.put("start", start);
-        map.put("end", end);
-        return 0;
+    public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
+        List<ModelArticle> result=null;
+        result=dao.getArticleList(boardcd, searchWord, start, end);
+        return result;
     }
 
     @Override
@@ -153,8 +150,8 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public List<ModelArticle> getNextArticle(ModelBoard board,
-            String searchWord) {
+    public List<ModelArticle> getNextArticle(ModelArticle board,
+            ModelArticle searchWord) {
         // TODO Auto-generated method stub
         return null;
     }
