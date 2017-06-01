@@ -44,6 +44,7 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
+
     public List<ModelBoard> getBoardListResultMap() {
         List<ModelBoard> result = null;
         result = session.selectList("mapper.mapperBoard.getBoardListResultMap");
@@ -100,12 +101,17 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int getArticleTotalRecord(int boardcd) {
+
+
         int result = -1;
         result = session.selectOne("mapper.mapperBoard.getArticleTotalRecord", boardcd );
         return result;
     }
 
     @Override
+
+
+
     public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
         List<ModelArticle> result = null;
         Map<String,ModelArticle> map=new HashMap<String,ModelArticle>();
@@ -150,46 +156,65 @@ public class DaoBoard implements IDaoBoard {
 
     @Override
     public int increaseHit(int articleNo) {
+
+
         int result=-1;
         result=session.selectOne("mapper.mapperBook.increaseHit",articleNo);
         return result;
     }
 
     @Override
-    public List<ModelArticle> getNextArticle(ModelArticle board, ModelArticle searchWord) {
-        List<ModelArticle> result=null;
-        Map<String,ModelArticle> map=new HashMap<>();
-        map.put("board",board);
-        map.put("searchWord",searchWord);
-        result=session.selectList("mapper.mapperBook.getNextArticle");
+
+
+
+
+    public List<ModelArticle> getNextArticle(ModelArticle article, String searchWord) {
+        List<ModelArticle> result = null;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("boardcd", article.getBoardcd());
+        map.put("articleNo", article.getArticleno());
+        map.put("searchWord", searchWord);
+        result = session.selectList("mapper.mapperBoard.getPrevArticle", map);
         return result;
     }
 
     @Override
-    public List<ModelArticle> getPrevArticle(ModelBoard board,String searchWord) {
 
-        // TODO Auto-generated method stub
-        return null;
+
+
+    public List<ModelArticle> getPrevArticle(ModelArticle article, String searchWord) {
+        List<ModelArticle> result = null;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("boardcd", article.getBoardcd());
+        map.put("articleNo", article.getArticleno());
+        map.put("searchWord", searchWord);
+        result = session.selectList("mapper.mapperBoard.getPrevArticle", map);
+        return result;
     }
 
     @Override
-    public List<ModelAttachFile> getAttachFile(int articleNo) {
+
+    public List<ModelAttachFile> getAttachFile(int attachFileNo) {
         List<ModelAttachFile> result = null;
-        result = session.selectList("mapper.mapperBoard.getAttachFile", articleNo);
+
+        result = session.selectList("mapper.mapperBoard.getAttachFile", attachFileNo);
         return result;
     }
 
     @Override
-    public int insertAttachFile(ModelAttachFile attachfile) {
+
+    public int insertAttachFile(ModelAttachFile attachFile) {
         int result = -1;
-        result = session.insert("mapper.mapperBoard.insertAttachFile", attachfile);
+
+        result = session.insert("mapper.mapperBoard.insertAttachFile", attachFile);
         return result;
     }
 
     @Override
-    public int deleteAttachFile(ModelAttachFile attachfile) {
+
+    public int deleteAttachFile(ModelAttachFile attachFile) {
         int result = -1;
-        result = session.delete("mapper.mapperBoard.deleteAttachFile", attachfile);
+        result = session.delete("mapper.mapperBoard.deleteAttachFile", attachFile);
         return result;
     }
 
