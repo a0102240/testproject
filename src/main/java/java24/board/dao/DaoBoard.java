@@ -93,7 +93,7 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public int insertBoardList(List item) {
+    public int insertBoardList(ModelBoard item) {
         int result=-1;
         result=session.insert("mapper.mapperBook.insertBoardList",item);
         return result;
@@ -133,9 +133,9 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public int updateArticle (ModelBoard updateValue, ModelBoard searchValue) {
+    public int updateArticle (ModelArticle updateValue, ModelArticle searchValue) {
         int result=-1;
-        Map<String,ModelBoard> map=new HashMap<String,ModelBoard>();
+        Map<String,ModelArticle> map=new HashMap<String,ModelArticle>();
         map.put("updateValue",updateValue);
         map.put("searchValue",searchValue);
         result=session.update("mapper.mapperBook.updateArticle",map);

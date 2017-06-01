@@ -59,89 +59,160 @@ public class ServiceBoard implements IServiceBoard{
 
     @Override
     public List<ModelBoard> getBoardListResultMap() {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelBoard> result = null;
+        try {
+        result = dao.getBoardListResultMap();
+        } catch (Exception e) {
+            log.error( "getBoardListResultMap " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public int insertBoard(ModelBoard board) {
-        int result =-1;
-        result=dao.insertBoard(board);
+        int result = -1;
+        try {
+        result = dao.insertBoard(board);
+        } catch (Exception e) {
+            log.error( "insertBoard " + e.getMessage() );
+        }
         return result;
     }
 
     @Override
     public int updateBoard(ModelBoard updateValue, ModelBoard searchValue) {
         int result =-1;
-        result=dao.updateBoard(updateValue, searchValue);
+        try {
+            result=dao.updateBoard(updateValue, searchValue);
+        } catch (Exception e) {
+            log.error( "updateBoard " + e.getMessage() );
+        }
         return result;
     }
 
     @Override
     public int deleteBoard(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result =-1;
+        try {
+            result=dao.deleteBoard(board);
+        } catch (Exception e) {
+            log.error( "deleteBoard " + e.getMessage() );
+        }
+        return result;
     }
-
+    
     @Override
     public List<ModelBoard> getBoardSearch(ModelBoard board) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        List<ModelBoard> result = null;
+        try {
+        result = dao.getBoardSearch(board);
+        } catch (Exception e) {
+            log.error( "getBoardSearch " + e.getMessage() );
+        }
+        return result;
+    }    
 
     @Override
     public List<ModelBoard> getBoardPaging(ModelBoard boardcd,ModelBoard searchWord) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelBoard> result = null;
+        try {
+        result = dao.getBoardPaging(boardcd,searchWord);
+        } catch (Exception e) {
+            log.error( "getBoardPaging " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
-    public int insertBoardList(List item) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int insertBoardList(ModelBoard item) {
+        int result =-1;
+        try {
+            result=dao.insertBoardList(item);
+        } catch (Exception e) {
+            log.error( "insertBoardList " + e.getMessage() );
+        }
+        return result;
     }
+    
 
     @Override
     public int getArticleTotalRecord(int boardcd) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result =-1;
+        try {
+            result=dao.getArticleTotalRecord(boardcd);
+        } catch (Exception e) {
+            log.error( "getArticleTotalRecord " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
         List<ModelArticle> result=null;
+        try {
         result=dao.getArticleList(boardcd, searchWord, start, end);
+        } catch (Exception e) {    
+            log.error( "getArticleTotalRecord " + e.getMessage() );
+        }
         return result;
     }
 
     @Override
     public List<ModelArticle> getArticle(int articleNo) {
-        // TODO Auto-generated method stub
-        return null;
+        List<ModelArticle> result=null;
+        try {
+        result=dao.getArticle(articleNo);
+        } catch (Exception e) {    
+            log.error( "getArticle " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
     public int insertArticle(ModelArticle article) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result =-1;
+        try {
+            result=dao.insertArticle(article);
+        } catch (Exception e) {
+            log.error( "insertArticle " + e.getMessage() );
+        }
+        return result;
     }
+    
 
     @Override
-    public int updateArticle(ModelBoard updateValue, ModelBoard searchValue) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int updateArticle(ModelArticle updateValue, ModelArticle searchValue) {
+        int result =-1;
+        try {
+            result=dao.updateArticle(updateValue,searchValue);
+        } catch (Exception e) {
+            log.error( "updateArticle " + e.getMessage() );
+        }
+        return result;
+    
     }
 
     @Override
     public int deleteArticle(ModelArticle article) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result =-1;
+        try {
+            result=dao.deleteArticle(article);
+        } catch (Exception e) {
+            log.error( "deleteArticle " + e.getMessage() );
+        }
+        return result;
+    
     }
-
+   
     @Override
     public int increaseHit(int articleNo) {
-        // TODO Auto-generated method stub
-        return 0;
+        int result =-1;
+        try {
+            result=dao.increaseHit(articleNo);
+        } catch (Exception e) {
+            log.error( "increaseHit " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
