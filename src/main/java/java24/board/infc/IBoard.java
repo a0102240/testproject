@@ -43,9 +43,9 @@ public interface IBoard {
 
     int increaseHit(int articleNo);
     
-    List<ModelArticle> getNextArticle(ModelBoard board, String searchWord); 
+    List<ModelArticle> getNextArticle(ModelArticle article, String searchWord);
     
-    List<ModelArticle> getPrevArticle(ModelBoard board, String searchWord);
+    List<ModelArticle> getPrevArticle(ModelArticle article, String searchWord);
     
     List<ModelAttachFile> getAttachFile(int attachFileNo);
     

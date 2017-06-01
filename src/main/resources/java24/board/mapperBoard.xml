@@ -264,7 +264,7 @@
                 </if> 
                 ORDER BY articleno DESC
             ) a
-            , (SELECT @RNUM:=0) b
+        , (SELECT @RNUM:=0) b
         ) c
         WHERE r = 1
     </select>

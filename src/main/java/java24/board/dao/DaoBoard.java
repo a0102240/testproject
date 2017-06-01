@@ -147,17 +147,25 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelArticle> getNextArticle(ModelBoard board,
-            String searchWord) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelArticle> getNextArticle(ModelArticle article, String searchWord) {
+        List<ModelArticle> result = null;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("boardcd", article.getBoardcd());
+        map.put("articleNo", article.getArticleno());
+        map.put("searchWord", searchWord);
+        result = session.selectList("mapper.mapperBoard.getPrevArticle", map);
+        return result;
     }
 
     @Override
-    public List<ModelArticle> getPrevArticle(ModelBoard board,String searchWord) {
-
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelArticle> getPrevArticle(ModelArticle article, String searchWord) {
+        List<ModelArticle> result = null;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("boardcd", article.getBoardcd());
+        map.put("articleNo", article.getArticleno());
+        map.put("searchWord", searchWord);
+        result = session.selectList("mapper.mapperBoard.getPrevArticle", map);
+        return result;
     }
 
     @Override

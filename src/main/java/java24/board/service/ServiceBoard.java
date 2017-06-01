@@ -153,17 +153,25 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public List<ModelArticle> getNextArticle(ModelBoard board,
-            String searchWord) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelArticle> getNextArticle(ModelArticle article, String searchWord) {
+        List<ModelArticle> result = null;
+        try {
+            result = dao.getNextArticle(article, searchWord);
+        } catch (Exception e) {
+            log.error( "getNextArticle " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
-    public List<ModelArticle> getPrevArticle(ModelBoard board,
-            String searchWord) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<ModelArticle> getPrevArticle(ModelArticle article, String searchWord) {
+        List<ModelArticle> result = null;
+        try {
+            result = dao.getPrevArticle(article, searchWord);
+        } catch (Exception e) {
+            log.error( "getAttachFile " + e.getMessage() );
+        }
+        return result;
     }
 
     @Override
