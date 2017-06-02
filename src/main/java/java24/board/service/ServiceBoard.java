@@ -14,13 +14,13 @@ import java24.board.model.ModelAttachFile;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
-@Service("board")
+@Service("service")
 
 public class ServiceBoard implements IServiceBoard{
     private static Logger log= LoggerFactory.getLogger(Log4jTest.class);
     
     @Autowired
-    @Qualifier("daobook")
+    @Qualifier("dao")
     private DaoBoard dao;
     
     @Override
@@ -232,7 +232,7 @@ public class ServiceBoard implements IServiceBoard{
         try {
             result = dao.getPrevArticle(article, searchWord);
         } catch (Exception e) {
-            log.error( "getAttachFile " + e.getMessage() );
+            log.error( "getPrevArticle " + e.getMessage() );
         }
         return result;
     }
@@ -244,6 +244,17 @@ public class ServiceBoard implements IServiceBoard{
             result = dao.getAttachFile(attachFileNo);
         } catch (Exception e) {
             log.error( "getAttachFile " + e.getMessage() );
+        }
+        return result;
+    }
+
+    @Override
+    public List<ModelAttachFile> getAttachFileList(int articleNo) {
+        List<ModelAttachFile> result = null;
+        try {
+            result = dao.getAttachFile(articleNo);
+        } catch (Exception e) {
+            log.error( "getAttachFileList " + e.getMessage() );
         }
         return result;
     }

@@ -47,6 +47,8 @@ public interface IBoard {
     List<ModelArticle> getPrevArticle(ModelArticle article, String searchWord);
     
     List<ModelAttachFile> getAttachFile(int attachFileNo);
+
+    List<ModelAttachFile> getAttachFileList(int articleNo);
     
     int insertAttachFile(ModelAttachFile attachFile);
 

@@ -6,13 +6,37 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
+
+import java24.board.infc.IServiceBoard;
+import java24.board.model.ModelArticle;
+import java24.board.model.ModelAttachFile;
+import java24.board.model.ModelComments;
 
 public class ServiceBoardTest {
     // SLF4J Logging
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static IServiceBoard service = null;
     
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
+        try {
+            // classpath를 이용한 설정 파일 로딩
+            ApplicationContext context = new ClassPathXmlApplicationContext("/java24/board/ApplicationContext.xml");
+
+            // file을 이용한 설정 파일 로딩
+            // java.io.File log4jfile = new java.io.File("file:src/main/resources/ApplicationContext.xml");
+            //ApplicationContext context = new
+            //                  ClassPathXmlApplicationContext(log4jfile.getAbsolutePath());
+
+            service = context.getBean("service",IServiceBoard.class);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     @Test
@@ -102,51 +126,97 @@ public class ServiceBoardTest {
     
     @Test
     public void testGetNextArticle() {
-        fail("Not yet implemented");
+        ModelArticle article = new ModelArticle();
+        article.setBoardcd("free");
+        article.setArticleno(5);
+        String searchWord = "test";
+        List<ModelArticle> result = service.getNextArticle(article, searchWord);
+        assertSame(result.size(), 1);
     }
     
     @Test
     public void testGetPrevArticle() {
-        fail("Not yet implemented");
+        ModelArticle article = new ModelArticle();
+        article.setBoardcd("free");
+        article.setArticleno(5);
+        String searchWord = "test";
+        List<ModelArticle> result = service.getPrevArticle(article, searchWord);
+        assertSame(result.size(), 1);
     }
     
     @Test
     public void testGetAttachFile() {
-        fail("Not yet implemented");
+        int attachFileNo = 1;
+        List<ModelAttachFile> result = service.getAttachFile(attachFileNo);
+        assertSame(result, 1);
+    }
+
+    @Test
+    public void testGetAttachFileList() {
+        int articleNo = 1;
+        List<ModelAttachFile> result= service.getAttachFileList(articleNo);
+        assertSame(result.size(),1);
     }
     
     @Test
     public void testInsertAttachFile() {
-        fail("Not yet implemented");
+        ModelAttachFile attachFile = new ModelAttachFile();
+        attachFile.setFilename("test");
+        attachFile.setFiletype("jpg");
+        attachFile.setFilesize(100);
+        int result = service.insertAttachFile(attachFile);
+        assertSame(result, 1);
     }
     
     @Test
     public void testDeleteAttachFile() {
-        fail("Not yet implemented");
+        ModelAttachFile attachFile = new ModelAttachFile();
+        attachFile.setAttachfileno(1);
+        int result = service.deleteAttachFile(attachFile);
+        assertSame(result, 1);
     }
     
     @Test
     public void testGetComment() {
-        fail("Not yet implemented");
+        int commentNo = 1;
+        List<ModelComments> result= service.getComment(commentNo);
+        assertSame(result.size(),1);
     }
     
     @Test
     public void testGetCommentList() {
-        fail("Not yet implemented");
+        int articleNo = 1;
+        List<ModelComments> result= service.getCommentList(articleNo);
+        assertSame(result.size(),1);
     }
     
     @Test
     public void testInsertComment() {
-        fail("Not yet implemented");
+        ModelComments comments=new ModelComments();
+        comments.setArticleno(2);
+        comments.setEmail("1004@naver.com");
+        comments.setMemo("test");
+        int result = service.insertComment(comments);
+        assertSame(result, 1);
     }
     
     @Test
     public void testUpdateComment() {
-        fail("Not yet implemented");
+        ModelComments updateValue = new ModelComments();
+        updateValue.setMemo("test");
+
+        ModelComments searchValue = new ModelComments();
+        searchValue.setCommentno(1);
+
+        int result = service.updateComment(updateValue, searchValue);
+        assertSame(result, 1);
     }
     
     @Test
     public void testDeleteComment() {
-        fail("Not yet implemented");
+        ModelComments comments=new ModelComments();
+        comments.setCommentno(1);
+        int result = service.deleteComment(comments);
+        assertSame(result, 1);
     }
 }

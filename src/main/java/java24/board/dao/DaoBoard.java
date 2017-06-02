@@ -15,7 +15,7 @@ import java24.board.model.ModelArticle;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
-@Repository("board")
+@Repository("dao")
 public class DaoBoard implements IDaoBoard {
     
     @Autowired
@@ -179,7 +179,6 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-
     public List<ModelAttachFile> getAttachFile(int attachFileNo) {
         List<ModelAttachFile> result = null;
 
@@ -188,7 +187,13 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
+    public List<ModelAttachFile> getAttachFileList(int articleNo) {
+        List<ModelAttachFile> result = null;
+        result = session.selectList("mapper.mapperBoard.getAttachFileList", articleNo);
+        return result;
+    }
 
+    @Override
     public int insertAttachFile(ModelAttachFile attachFile) {
         int result = -1;
         result = session.insert("mapper.mapperBoard.insertAttachFile", attachFile);
@@ -196,7 +201,6 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-
     public int deleteAttachFile(ModelAttachFile attachFile) {
         int result = -1;
         result = session.delete("mapper.mapperBoard.deleteAttachFile", attachFile);
