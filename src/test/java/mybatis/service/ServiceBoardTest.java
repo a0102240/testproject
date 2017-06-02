@@ -82,6 +82,7 @@ public class ServiceBoardTest {
       
       ModelBoard updateValue=new ModelBoard();
       updateValue.setBoardnm("자유");
+      updateValue.setUseYN(true);
 
       ModelBoard searchValue=new ModelBoard();
       searchValue.setBoardcd("free");
