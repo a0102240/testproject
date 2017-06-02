@@ -113,10 +113,10 @@ public class ServiceBoard implements IServiceBoard{
     }    
 
     @Override
-    public List<ModelBoard> getBoardPaging(String boardcd,String searchWord) {
+    public List<ModelBoard> getBoardPaging(String boardcd, String searchWord, int start, int end) {
         List<ModelBoard> result = null;
         try {
-        result = dao.getBoardPaging(boardcd,searchWord);
+        result = dao.getBoardPaging(boardcd, searchWord, start, end);
         } catch (Exception e) {
             log.error( "getBoardPaging " + e.getMessage() );
         }
@@ -136,10 +136,10 @@ public class ServiceBoard implements IServiceBoard{
     
 
     @Override
-    public int getArticleTotalRecord(int boardcd) {
+    public int getArticleTotalRecord(String boardcd, String searchWord) {
         int result =-1;
         try {
-            result=dao.getArticleTotalRecord(boardcd);
+            result=dao.getArticleTotalRecord(boardcd, searchWord);
         } catch (Exception e) {
             log.error( "getArticleTotalRecord " + e.getMessage() );
         }
@@ -147,7 +147,7 @@ public class ServiceBoard implements IServiceBoard{
     }
 
     @Override
-    public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
+    public List<ModelArticle> getArticleList(String boardcd, String searchWord, int start, int end) {
         List<ModelArticle> result=null;
         try {
         result=dao.getArticleList(boardcd, searchWord, start, end);

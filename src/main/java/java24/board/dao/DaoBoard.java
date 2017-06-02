@@ -83,7 +83,7 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public List<ModelBoard> getBoardPaging(String boardcd,String searchWord) {
+    public List<ModelBoard> getBoardPaging(String boardcd, String searchWord, int start, int end) {
         List<ModelBoard> result = null;
         Map<String,String> map=new HashMap<String,String>();
         map.put("boardcd", boardcd);
@@ -100,16 +100,16 @@ public class DaoBoard implements IDaoBoard {
     }
 
     @Override
-    public int getArticleTotalRecord(int boardcd) {
+    public int getArticleTotalRecord(String boardcd, String searchWord) {
         int result = -1;
         result = session.selectOne("mapper.mapperBoard.getArticleTotalRecord", boardcd );
         return result;
     }
 
     @Override
-    public List<ModelArticle> getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end) {
+    public List<ModelArticle> getArticleList(String boardcd, String searchWord, int start, int end) {
         List<ModelArticle> result = null;
-        Map<String,ModelArticle> map=new HashMap<String,ModelArticle>();
+        Map<String, Object> map=new HashMap<String, Object>();
         map.put("boardcd", boardcd);
         map.put("searchWord", searchWord);
         map.put("start", start);
