@@ -44,7 +44,6 @@ public class ServiceBoardTest {
 
     @Test
     public void testGetBoardName() {
-        ModelBoard board=new ModelBoard();
         String boardcd = "data";
         String result = service.getBoardName(boardcd);
         assertEquals(result,"자료실");
@@ -101,52 +100,96 @@ public class ServiceBoardTest {
     
     @Test
     public void testGetBoardSearch() {
-        fail("Not yet implemented");
+        ModelBoard board = new ModelBoard();
+        board.setBoardcd("free");
+        List<ModelBoard> result = service.getBoardSearch(board);
+        assertSame(result.size(), 1);
     }
     
     @Test
     public void testGetBoardPaging() {
-        fail("Not yet implemented");
+        ModelBoard board = new ModelBoard();
+        String boardcd = "free";
+        String searchWord = null;
+        int start = 1;
+        int end = 10;
+        List<ModelArticle> result = service.getArticleList(boardcd, searchWord, start, end);
+        assertSame(result.size(), 10);
     }
     
     @Test
     public void testInsertBoardList() {
-        fail("Not yet implemented");
+        ModelBoard board = new ModelBoard();
+        board.setBoardcd("info");
+        board.setBoardnm("공지사항");
+        board.setUseYN(true);
+        int result = service.insertBoard(board);
+        assertSame(result, 1);
     }
     
     @Test
     public void testGetArticleTotalRecord() {
-        fail("Not yet implemented");
+        ModelArticle article = new ModelArticle();
+        String boardcd = "free";
+        String searchWord = "10";
+        int result = service.getArticleTotalRecord(boardcd, searchWord);
+        assertSame(result, 1);
     }
     
     @Test
     public void testGetArticleList() {
-        fail("Not yet implemented");
+        ModelArticle article = new ModelArticle();
+        String boardcd = "free";
+        String searchWord = "test";
+        int start = 1;
+        int end = 10;
+        List<ModelArticle> result = service.getArticleList(boardcd, searchWord, start, end);
+        assertSame(result.size(), 10);
     }
     
     @Test
     public void testGetArticle() {
-        fail("Not yet implemented");
+        int articleNo = 7;
+        List<ModelArticle> result = service.getArticle(articleNo);
+        assertSame(result.size(), 1);
     }
     
     @Test
     public void testInsertArticle() {
-        fail("Not yet implemented");
+        ModelArticle article = new ModelArticle();
+        article.setBoardcd("free");
+        article.setTitle("article test 15");
+        article.setContent("article test 15");
+        article.setEmail("test@naver.com");
+        int result = service.insertArticle(article);
+        assertSame(result, 1);
     }
     
     @Test
     public void testUpdateArticle() {
-        fail("Not yet implemented");
+        ModelArticle updateValue = new ModelArticle();
+        updateValue.setTitle("update test");
+
+        ModelArticle searchValue = new ModelArticle();
+        searchValue.setArticleno(10);
+
+        int result = service.updateArticle(updateValue, searchValue);
+        assertSame(result, 1);
     }
     
     @Test
     public void testDeleteArticle() {
-        fail("Not yet implemented");
+        ModelArticle article = new ModelArticle();
+        article.setArticleno(1);
+        int result = service.deleteArticle(article);
+        assertSame(result, 1);
     }
     
     @Test
     public void testIncreaseHit() {
-        fail("Not yet implemented");
+        int articleNo = 1;
+        int result = service.increaseHit(articleNo);
+        assertSame(result, 1);
     }
     
     @Test
@@ -219,7 +262,7 @@ public class ServiceBoardTest {
     public void testInsertComment() {
         ModelComments comments=new ModelComments();
         comments.setArticleno(2);
-        comments.setEmail("1004@naver.com");
+        comments.setEmail("test@naver.com");
         comments.setMemo("test");
         int result = service.insertComment(comments);
         assertSame(result, 1);

@@ -24,13 +24,13 @@ public interface IBoard {
     
     List<ModelBoard> getBoardSearch(ModelBoard board);
     
-    List<ModelBoard> getBoardPaging(String boardcd,String searchWord);
+    List<ModelBoard> getBoardPaging(String boardcd, String searchWord, int start, int end);
     
     int insertBoardList (ModelBoard item);
         
-    int getArticleTotalRecord (int boardcd);
+    int getArticleTotalRecord (String boardcd, String searchWord);
         
-    List<ModelArticle>getArticleList(ModelArticle boardcd,ModelArticle searchWord, ModelArticle start, ModelArticle end);
+    List<ModelArticle>getArticleList(String boardcd, String searchWord, int start, int end);
      
     List<ModelArticle> getArticle (int articleNo);
      
