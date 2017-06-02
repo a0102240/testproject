@@ -8,12 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.util.List;
-
 import java24.board.infc.IServiceBoard;
 import java24.board.model.ModelArticle;
 import java24.board.model.ModelAttachFile;
+import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
 public class ServiceBoardTest {
@@ -39,14 +38,17 @@ public class ServiceBoardTest {
         }
     }
     
+
     @Test
     public void testGetBoardName() {
-        fail("Not yet implemented");
+        ModelBoard board=new ModelBoard();
+        String boardcd = "data";
+        String result = service.getBoardName(boardcd);
+        assertSame(result,"자료실");
     }
     
     @Test
     public void testGetBoardOne() {
-        fail("Not yet implemented");
     }
     
     @Test
@@ -61,7 +63,7 @@ public class ServiceBoardTest {
     
     @Test
     public void testInsertBoard() {
-        fail("Not yet implemented");
+       
     }
     
     @Test

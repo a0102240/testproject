@@ -20,7 +20,7 @@ public class ServiceBoard implements IServiceBoard{
     private static Logger log= LoggerFactory.getLogger(Log4jTest.class);
     
     @Autowired
-    @Qualifier("dao")
+    @Qualifier("daoboard")
     private DaoBoard dao;
     
     @Override

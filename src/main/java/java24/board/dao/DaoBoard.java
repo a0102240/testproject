@@ -15,13 +15,13 @@ import java24.board.model.ModelArticle;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
-@Repository("dao")
+@Repository("daoboard")
 public class DaoBoard implements IDaoBoard {
     
     @Autowired
     @Qualifier("sqlSession")
     private SqlSession session;
-
+    
     @Override
     public String getBoardName(String boardcd) {
         String result = "";
