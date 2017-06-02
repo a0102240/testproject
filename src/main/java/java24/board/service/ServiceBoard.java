@@ -14,13 +14,12 @@ import java24.board.model.ModelAttachFile;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
-@Service("board")
-
+@Service("serviceboard")
 public class ServiceBoard implements IServiceBoard{
     private static Logger log= LoggerFactory.getLogger(Log4jTest.class);
     
     @Autowired
-    @Qualifier("daobook")
+    @Qualifier("daoboard")
     private DaoBoard dao;
     
     @Override

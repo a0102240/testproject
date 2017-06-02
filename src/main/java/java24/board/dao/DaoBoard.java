@@ -15,7 +15,7 @@ import java24.board.model.ModelArticle;
 import java24.board.model.ModelBoard;
 import java24.board.model.ModelComments;
 
-@Repository("board")
+@Repository("daoboard")
 public class DaoBoard implements IDaoBoard {
     
     @Autowired
