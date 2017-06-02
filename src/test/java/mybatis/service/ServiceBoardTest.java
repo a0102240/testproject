@@ -81,10 +81,10 @@ public class ServiceBoardTest {
     public void testUpdateBoard() {
       
       ModelBoard updateValue=new ModelBoard();
-      updateValue.setBoardnm("ff1");
-      
+      updateValue.setBoardnm("자유");
+
       ModelBoard searchValue=new ModelBoard();
-      searchValue.setBoardcd("ff");
+      searchValue.setBoardcd("free");
       
       int result=service.updateBoard(updateValue, searchValue);
       assertSame(result, 1);
