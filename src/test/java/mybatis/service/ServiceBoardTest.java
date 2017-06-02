@@ -121,7 +121,9 @@ public class ServiceBoardTest {
     
     @Test
     public void testIncreaseHit() {
-        fail("Not yet implemented");
+        int articleNo = 1;
+        int result = service.increaseHit(articleNo);
+        assertSame(result, 1);
     }
     
     @Test
