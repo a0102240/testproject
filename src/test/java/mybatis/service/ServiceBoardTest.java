@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java23.mybatis.model.ModelBook;
+
 import java.util.List;
 import java24.board.infc.IServiceBoard;
 import java24.board.model.ModelArticle;
@@ -44,36 +47,56 @@ public class ServiceBoardTest {
         ModelBoard board=new ModelBoard();
         String boardcd = "data";
         String result = service.getBoardName(boardcd);
-        assertSame(result,"자료실");
+        assertEquals(result,"자료실");
     }
     
     @Test
     public void testGetBoardOne() {
+        ModelBoard board=new ModelBoard();
+        String boardcd = "data";
+        List<ModelBoard> result= service.getBoardOne(boardcd);
+        assertEquals(result,"data");
     }
     
     @Test
     public void testGetBoardList() {
-        fail("Not yet implemented");
+        
     }
     
     @Test
     public void testGetBoardListResultMap() {
-        fail("Not yet implemented");
-    }
+     }
     
     @Test
     public void testInsertBoard() {
-       
+        ModelBoard board= new ModelBoard();
+        board.setBoardcd("ff");
+        board.setBoardnm("ff");
+        board.setUseYN(true);
+        board.setBoardnm("ff");
+        int result = service.insertBoard(board);
+        assertEquals(result, 1);
     }
     
     @Test
     public void testUpdateBoard() {
-        fail("Not yet implemented");
-    }
+      
+      ModelBoard updateValue=new ModelBoard();
+      updateValue.setBoardnm("ff1");
+      
+      ModelBoard searchValue=new ModelBoard();
+      searchValue.setBoardcd("ff");
+      
+      int result=service.updateBoard(updateValue, searchValue);
+      assertSame(result, 1);
+      }
     
     @Test
     public void testDeleteBoard() {
-        fail("Not yet implemented");
+        ModelBoard board = new ModelBoard();
+        board.setBoardcd("ff");
+        int result = service.deleteBoard(board);
+        assertSame(result, 1);
     }
     
     @Test

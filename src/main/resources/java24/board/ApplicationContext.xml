@@ -100,7 +100,7 @@
     <!-- Transaction 대상 설정 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="Insert*"       rollback-for="RuntimeException" />
+            <tx:method name="insert*"       rollback-for="RuntimeException" />
             <tx:method name="write*"        rollback-for="RuntimeException" />
             <tx:method name="add*"          rollback-for="RuntimeException" />
             <tx:method name="create*"       rollback-for="RuntimeException" />
