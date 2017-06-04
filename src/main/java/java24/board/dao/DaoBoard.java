@@ -85,9 +85,11 @@ public class DaoBoard implements IDaoBoard {
     @Override
     public List<ModelBoard> getBoardPaging(String boardcd, String searchWord, int start, int end) {
         List<ModelBoard> result = null;
-        Map<String,String> map=new HashMap<String,String>();
+        Map<String, Object> map = new HashMap<>();
         map.put("boardcd", boardcd);
         map.put("searchWord", searchWord);
+        map.put("start", start);
+        map.put("end", end);
         result = session.selectList("mapper.mapperBoard.getBoardPaging",map);
         return result;
     }
@@ -95,14 +97,17 @@ public class DaoBoard implements IDaoBoard {
     @Override
     public int insertBoardList(ModelBoard item) {
         int result=-1;
-        result=session.insert("mapper.mapperBook.insertBoardList",item);
+        result=session.insert("mapper.mapperBoard.insertBoardList",item);
         return result;
     }
 
     @Override
     public int getArticleTotalRecord(String boardcd, String searchWord) {
         int result = -1;
-        result = session.selectOne("mapper.mapperBoard.getArticleTotalRecord", boardcd );
+        Map<String, String> map = new HashMap<>();
+        map.put("boardcd", boardcd);
+        map.put("searchWord", searchWord);
+        result = session.selectOne("mapper.mapperBoard.getArticleTotalRecord", map);
         return result;
     }
 
@@ -114,7 +119,7 @@ public class DaoBoard implements IDaoBoard {
         map.put("searchWord", searchWord);
         map.put("start", start);
         map.put("end", end);
-        result = session.selectList("mapper.mapperBoard.getArticleList");
+        result = session.selectList("mapper.mapperBoard.getArticleList", map);
         return result;
     }
 
@@ -138,21 +143,21 @@ public class DaoBoard implements IDaoBoard {
         Map<String,ModelArticle> map=new HashMap<String,ModelArticle>();
         map.put("updateValue",updateValue);
         map.put("searchValue",searchValue);
-        result=session.update("mapper.mapperBook.updateArticle",map);
+        result=session.update("mapper.mapperBoard.updateArticle",map);
         return result;
     }
 
     @Override
     public int deleteArticle(ModelArticle article) {
         int result=-1;
-        result=session.delete("mapper.mapperBook.deleteArticle",article);
+        result=session.delete("mapper.mapperBoard.deleteArticle",article);
         return result;
     }
 
     @Override
     public int increaseHit(int articleNo) {
         int result=-1;
-        result=session.selectOne("mapper.mapperBook.increaseHit",articleNo);
+        result=session.update("mapper.mapperBoard.increaseHit",articleNo);
         return result;
     }
 
@@ -234,7 +239,7 @@ public class DaoBoard implements IDaoBoard {
         Map<String, ModelComments> map=new HashMap<String, ModelComments>();
         map.put("updateValue",updateValue);
         map.put("searchValue",searchValue);
-        result=session.update("mapper.mapperBoard.updateBoard",map);
+        result=session.update("mapper.mapperBoard.updateComment",map);
         return result;
     }
 
@@ -244,12 +249,4 @@ public class DaoBoard implements IDaoBoard {
         result = session.delete("mapper.mapperBoard.deleteComment", comments);
         return result;
     }
-
-    @Override
-    public List<ModelBoard> getBoardPaging() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    
 }

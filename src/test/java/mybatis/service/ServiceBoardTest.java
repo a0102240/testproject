@@ -43,14 +43,14 @@ public class ServiceBoardTest {
     
 
     @Test
-    public void testGetBoardName() {
+    public void testGetBoardName() { // success
         String boardcd = "data";
         String result = service.getBoardName(boardcd);
         assertEquals(result,"자료실");
     }
     
     @Test
-    public void testGetBoardOne() {
+    public void testGetBoardOne() {  // success
         ModelBoard board=new ModelBoard();
         String boardcd = "data";
         List<ModelBoard> result= service.getBoardOne(boardcd);
@@ -58,16 +58,19 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetBoardList() {
-        
+    public void testGetBoardList() {  // success
+        List<ModelBoard> result = service.getBoardList();
+        assertSame(result.size(), 4); // board 갯수 확인
     }
     
     @Test
-    public void testGetBoardListResultMap() {
+    public void testGetBoardListResultMap() {  // success
+        List<ModelBoard> result = service.getBoardListResultMap();
+        assertSame(result.size(), 4); // board 갯수 확인
      }
     
     @Test
-    public void testInsertBoard() {
+    public void testInsertBoard() {  // success
         ModelBoard board= new ModelBoard();
         board.setBoardcd("ff");
         board.setBoardnm("ff");
@@ -78,10 +81,10 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testUpdateBoard() {
+    public void testUpdateBoard() {  // success
       
       ModelBoard updateValue=new ModelBoard();
-      updateValue.setBoardnm("자유");
+      updateValue.setBoardnm("자유게시");
       updateValue.setUseYN(true);
 
       ModelBoard searchValue=new ModelBoard();
@@ -92,7 +95,7 @@ public class ServiceBoardTest {
       }
     
     @Test
-    public void testDeleteBoard() {
+    public void testDeleteBoard() {  // success
         ModelBoard board = new ModelBoard();
         board.setBoardcd("ff");
         int result = service.deleteBoard(board);
@@ -100,7 +103,7 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetBoardSearch() {
+    public void testGetBoardSearch() {  // success
         ModelBoard board = new ModelBoard();
         board.setBoardcd("free");
         List<ModelBoard> result = service.getBoardSearch(board);
@@ -108,18 +111,17 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetBoardPaging() {
-        ModelBoard board = new ModelBoard();
+    public void testGetBoardPaging() {  // success
         String boardcd = "free";
-        String searchWord = null;
+        String searchWord = "자유";
         int start = 1;
         int end = 10;
-        List<ModelArticle> result = service.getArticleList(boardcd, searchWord, start, end);
-        assertSame(result.size(), 10);
+        List<ModelBoard> result = service.getBoardPaging(boardcd, searchWord, start, end);
+        assertSame(result.size(), 1);
     }
     
     @Test
-    public void testInsertBoardList() {
+    public void testInsertBoardList() {  // success
         ModelBoard board = new ModelBoard();
         board.setBoardcd("info");
         board.setBoardnm("공지사항");
@@ -129,7 +131,7 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetArticleTotalRecord() {
+    public void testGetArticleTotalRecord() {  // success
         ModelArticle article = new ModelArticle();
         String boardcd = "free";
         String searchWord = "10";
@@ -138,8 +140,7 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetArticleList() {
-        ModelArticle article = new ModelArticle();
+    public void testGetArticleList() {  // success
         String boardcd = "free";
         String searchWord = "test";
         int start = 1;
@@ -149,14 +150,14 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetArticle() {
+    public void testGetArticle() {  // success
         int articleNo = 7;
         List<ModelArticle> result = service.getArticle(articleNo);
         assertSame(result.size(), 1);
     }
     
     @Test
-    public void testInsertArticle() {
+    public void testInsertArticle() {  // success
         ModelArticle article = new ModelArticle();
         article.setBoardcd("free");
         article.setTitle("article test 15");
@@ -167,34 +168,36 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testUpdateArticle() {
+    public void testUpdateArticle() {  // success
         ModelArticle updateValue = new ModelArticle();
         updateValue.setTitle("update test");
+        updateValue.setUseYN(true);
 
         ModelArticle searchValue = new ModelArticle();
-        searchValue.setArticleno(10);
+        searchValue.setTitle("article test 10");
+        searchValue.setUseYN(true);
 
         int result = service.updateArticle(updateValue, searchValue);
         assertSame(result, 1);
     }
     
     @Test
-    public void testDeleteArticle() {
+    public void testDeleteArticle() {  // success
         ModelArticle article = new ModelArticle();
-        article.setArticleno(1);
+        article.setArticleno(16);  // Article 마지막글
         int result = service.deleteArticle(article);
         assertSame(result, 1);
     }
     
     @Test
-    public void testIncreaseHit() {
+    public void testIncreaseHit() {  // success
         int articleNo = 1;
         int result = service.increaseHit(articleNo);
         assertSame(result, 1);
     }
     
     @Test
-    public void testGetNextArticle() {
+    public void testGetNextArticle() {  // success
         ModelArticle article = new ModelArticle();
         article.setBoardcd("free");
         article.setArticleno(5);
@@ -204,7 +207,7 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetPrevArticle() {
+    public void testGetPrevArticle() {  // success
         ModelArticle article = new ModelArticle();
         article.setBoardcd("free");
         article.setArticleno(5);
@@ -214,55 +217,56 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testGetAttachFile() {
+    public void testGetAttachFile() {  // success
         int attachFileNo = 1;
         List<ModelAttachFile> result = service.getAttachFile(attachFileNo);
-        assertSame(result, 1);
+        assertSame(result.size(), 1);
     }
 
     @Test
-    public void testGetAttachFileList() {
+    public void testGetAttachFileList() {  // success
         int articleNo = 1;
-        List<ModelAttachFile> result= service.getAttachFileList(articleNo);
-        assertSame(result.size(),1);
+        List<ModelAttachFile> result = service.getAttachFileList(articleNo);
+        assertSame(result.size(), 6);  // Attachfile 레코드수 확인
     }
     
     @Test
-    public void testInsertAttachFile() {
+    public void testInsertAttachFile() {  // success
         ModelAttachFile attachFile = new ModelAttachFile();
         attachFile.setFilename("test");
         attachFile.setFiletype("jpg");
         attachFile.setFilesize(100);
+        attachFile.setUseYN(true);
         int result = service.insertAttachFile(attachFile);
         assertSame(result, 1);
     }
     
     @Test
-    public void testDeleteAttachFile() {
+    public void testDeleteAttachFile() {  // success
         ModelAttachFile attachFile = new ModelAttachFile();
-        attachFile.setAttachfileno(1);
+        attachFile.setAttachfileno(8); // AttachFile 마지막 글
         int result = service.deleteAttachFile(attachFile);
         assertSame(result, 1);
     }
     
     @Test
-    public void testGetComment() {
-        int commentNo = 1;
+    public void testGetComment() {  // success
+        int commentNo = 2;
         List<ModelComments> result= service.getComment(commentNo);
         assertSame(result.size(),1);
     }
     
     @Test
-    public void testGetCommentList() {
-        int articleNo = 1;
+    public void testGetCommentList() {  // success
+        int articleNo = 2;
         List<ModelComments> result= service.getCommentList(articleNo);
         assertSame(result.size(),1);
     }
     
     @Test
-    public void testInsertComment() {
+    public void testInsertComment() {  // success
         ModelComments comments=new ModelComments();
-        comments.setArticleno(2);
+        comments.setArticleno(3);
         comments.setEmail("test@naver.com");
         comments.setMemo("test");
         int result = service.insertComment(comments);
@@ -270,21 +274,22 @@ public class ServiceBoardTest {
     }
     
     @Test
-    public void testUpdateComment() {
+    public void testUpdateComment() {  // success
         ModelComments updateValue = new ModelComments();
         updateValue.setMemo("test");
+        updateValue.setUseYN(true);
 
         ModelComments searchValue = new ModelComments();
-        searchValue.setCommentno(1);
+        searchValue.setCommentno(4);
 
         int result = service.updateComment(updateValue, searchValue);
         assertSame(result, 1);
     }
     
     @Test
-    public void testDeleteComment() {
+    public void testDeleteComment() {  // success
         ModelComments comments=new ModelComments();
-        comments.setCommentno(1);
+        comments.setCommentno(4);  // commentno 확인
         int result = service.deleteComment(comments);
         assertSame(result, 1);
     }

@@ -5,17 +5,17 @@ import java.util.Date;
 
 public class ModelAttachFile {
     
-   private Integer attachfileno =null;  // `attachfileno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-   private String filename      ="";  // `filename` VARCHAR(50) NOT NULL,
-   private String filetype      ="";  // `filetype` VARCHAR(30) NULL DEFAULT NULL,
-   private Integer filesize     =null;  // `filesize` INT(11) NULL DEFAULT NULL,
-   private Integer articleno    =null;  // `articleno` INT(11) NULL DEFAULT NULL,
-   private Date UseYN           =null;  // `UseYN` TINYINT(1) NULL DEFAULT '1',
-   private String InsertUID     ="";  // `InsertUID` VARCHAR(40) NULL DEFAULT NULL,
-   private String InsertDT      ="";  // `InsertDT` DATETIME NULL DEFAULT NULL,
-   private String UpdateUID     ="";  // `UpdateUID` VARCHAR(40) NULL DEFAULT NULL,
-   private Date UpdateDT        =null;  // `UpdateDT` DATETIME NULL DEFAULT NULL,
-   private Byte[] imageData     =null;  // `imageData` LONGBLOB NULL,
+   private Integer attachfileno  = null;  // `attachfileno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+   private String  filename      = ""  ;  // `filename` VARCHAR(50) NOT NULL,
+   private String  filetype      = ""  ;  // `filetype` VARCHAR(30) NULL DEFAULT NULL,
+   private Integer filesize      = null;  // `filesize` INT(11) NULL DEFAULT NULL,
+   private Integer articleno     = null;  // `articleno` INT(11) NULL DEFAULT NULL,
+   private Boolean UseYN         = null;  // `UseYN` TINYINT(1) NULL DEFAULT '1',
+   private String  InsertUID     = ""  ;  // `InsertUID` VARCHAR(40) NULL DEFAULT NULL,
+   private Date    InsertDT      = null;  // `InsertDT` DATETIME NULL DEFAULT NULL,
+   private String  UpdateUID     = ""  ;  // `UpdateUID` VARCHAR(40) NULL DEFAULT NULL,
+   private Date    UpdateDT      = null;  // `UpdateDT` DATETIME NULL DEFAULT NULL,
+   private Byte[]  imageData     = null;  // `imageData` LONGBLOB NULL,
       
    
 
@@ -49,10 +49,10 @@ public class ModelAttachFile {
     public void setArticleno(Integer articleno) {
         this.articleno = articleno;
     }
-    public Date getUseYN() {
+    public Boolean getUseYN() {
         return UseYN;
     }
-    public void setUseYN(Date useYN) {
+    public void setUseYN(Boolean useYN) {
         UseYN = useYN;
     }
     public String getInsertUID() {
@@ -61,10 +61,10 @@ public class ModelAttachFile {
     public void setInsertUID(String insertUID) {
         InsertUID = insertUID;
     }
-    public String getInsertDT() {
+    public Date getInsertDT() {
         return InsertDT;
     }
-    public void setInsertDT(String insertDT) {
+    public void setInsertDT(Date insertDT) {
         InsertDT = insertDT;
     }
     public String getUpdateUID() {

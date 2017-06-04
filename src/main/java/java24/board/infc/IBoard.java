@@ -30,7 +30,7 @@ public interface IBoard {
         
     int getArticleTotalRecord (String boardcd, String searchWord);
         
-    List<ModelArticle>getArticleList(String boardcd, String searchWord, int start, int end);
+    List<ModelArticle> getArticleList(String boardcd, String searchWord, int start, int end);
      
     List<ModelArticle> getArticle (int articleNo);
      
